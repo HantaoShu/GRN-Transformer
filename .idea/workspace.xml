@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05bb8c5f-c762-43b4-89ce-f0bc8b42a91d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_data/BEELINE/500_ChIP-seq_mDC/outputs/pretrain_output.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/demo_data/BEELINE/500_ChIP-seq_mDC/outputs/pretrain_output.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo_data/simulation/SF/inputs/train_x.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/self_superivsed_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/self_superivsed_main.py" afterDir="false" />
-    </list>
+    <list default="true" id="05bb8c5f-c762-43b4-89ce-f0bc8b42a91d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,50 +172,6 @@
             <path>
               <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
               <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="ER" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="ER" type="462c0819:PsiDirectoryNode" />
-              <item name="inputs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="SF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="SF" type="462c0819:PsiDirectoryNode" />
-              <item name="inputs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
-              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
-              <item name="simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="SF" type="462c0819:PsiDirectoryNode" />
-              <item name="outputs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -271,15 +222,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635068835877</updated>
-      <workItem from="1635068838449" duration="15588000" />
+      <workItem from="1635068838449" duration="16399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15588000" />
+    <option name="totallyTimeSpent" value="16399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="25" width="1280" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
