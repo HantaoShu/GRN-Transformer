@@ -7,7 +7,7 @@ This directory contains the code and resources of the following paper:
 ## Overview of the Model
 
 <p align="center">
-<img  src="fig/Figure_1.jpg" width="800" height="400" > 
+<img  src="Figure1.pdf" width="800" height="400" > 
 </p>
 
 ## Dependencies
