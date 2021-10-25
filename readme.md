@@ -37,8 +37,7 @@ All dependencies can be installed within a few minutes.
         - ER/SF
             - inputs  Similar with inputs directory of 500_ChIP-seq_mDC except train-test-split index files. 
             'split\_\*\_0.5.pkl' denotes to the split file for train-test-split for random-split setting and 
-            split\_TF\_\*\_0.5
-            .pkl' 
+            'split\_TF\_\*\_0.5.pkl' 
             denotes to the split file for split-TF setting.
             - outputs Similar with outputs directory of 500_ChIP-seq_mDC 
 
