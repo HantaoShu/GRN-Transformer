@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="05bb8c5f-c762-43b4-89ce-f0bc8b42a91d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_data/BEELINE/500_ChIP-seq_mDC/outputs/pretrain_output.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/demo_data/BEELINE/500_ChIP-seq_mDC/outputs/pretrain_output.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_data/simulation/SF/inputs/train_x.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/self_superivsed_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/self_superivsed_main.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/self_superivsed_main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="258">
+                <caret line="62" column="94" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="95" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/attention.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/modules.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+              <folding>
+                <element signature="e#1#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/supervised_main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-337">
+              <caret column="14" selection-start-column="14" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>lr_step_size</find>
+      <find>lr</find>
+      <find>net_file</find>
+      <find>corr</find>
+      <find>d_mask</find>
+      <find>init_weights</find>
+      <find>saveid</find>
+      <find>imputation</find>
+      <find>save</find>
+      <find>loss_save</find>
+      <find>gelu</find>
+      <find>RobertaLMHead</find>
+      <find>ESM1LayerNorm</find>
+      <find>apc</find>
+      <find>activation_dropout</find>
+      <find>FeedForwardNetwork</find>
+      <find>return_contacts</find>
+      <find>network</find>
+      <find>row_attn_weights</find>
+      <find>GRNTransformer</find>
+      <find>mask_gene_id</find>
+      <find>loss_all</find>
+      <find>batchsize</find>
+      <find>pre_GRN_file</find>
+      <find>save_name</find>
+      <find>dataset</find>
+      <find>dataset_name</find>
+      <find>dropout</find>
+      <find>dropout_prob</find>
+      <find>need_head_weights</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/src/axial_attention.py" />
+        <option value="$PROJECT_DIR$/src/modules.py" />
+        <option value="$PROJECT_DIR$/supervised_main.py" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/src/model.py" />
+        <option value="$PROJECT_DIR$/self_superivsed_main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1453" />
+    <option name="y" value="28" />
+    <option name="width" value="1280" />
+    <option name="height" value="695" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="BEELINE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="ER" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="ER" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="SF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="SF" type="462c0819:PsiDirectoryNode" />
+              <item name="inputs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="demo_data" type="462c0819:PsiDirectoryNode" />
+              <item name="simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="SF" type="462c0819:PsiDirectoryNode" />
+              <item name="outputs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRNTransformer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRNTransformer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RemoteSynchronizer">
+    <option name="targetMappings">
+      <list>
+        <TargetMappings>
+          <option name="name" value="Default" />
+        </TargetMappings>
+      </list>
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05bb8c5f-c762-43b4-89ce-f0bc8b42a91d" name="Default Changelist" comment="" />
+      <created>1635068835877</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635068835877</updated>
+      <workItem from="1635068838449" duration="15588000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15588000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1440" y="25" width="1280" height="695" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959612" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="RemoteSynchronizer" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="File Transfer" visible="true" weight="0.20557491" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Remote Host" />
+      <window_info anchor="right" id="R Packages" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.3/remote_sources/-741888375/1751859945/sklearn/preprocessing/_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="1560" column="6" selection-start-line="1560" selection-start-column="6" selection-end-line="1560" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/supervised_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret column="14" selection-start-column="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/attention.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <element signature="e#1#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/self_superivsed_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="258">
+            <caret line="62" column="94" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="95" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
