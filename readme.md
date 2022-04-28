@@ -7,11 +7,12 @@ This directory contains the code and resources of the following paper:
 ## Overview of the Model
 
 <p align="center">
-<img  src="Figure1_github.png" width="800" height="1200" > 
+<img  src="Figure1_github.png" width="800" height="1000" > 
 </p>
 
 ## Dependencies
 - python==3.7
+- einops==0.3.0
 - pytorch==1.7.0+cu101
 - pandas==1.1.4
 - numpy==1.19.4

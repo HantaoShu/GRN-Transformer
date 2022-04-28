@@ -3,11 +3,6 @@ import math
 import torch
 import torch.nn as nn
 
-<<<<<<< HEAD
-=======
-from .attention import Attention
-
->>>>>>> ce64a8f (init)
 
 def gelu(x):
     return x * 0.5 * (1.0 + torch.erf(x / math.sqrt(2.0)))
@@ -54,45 +49,6 @@ except ImportError:
     from torch.nn import LayerNorm as ESM1bLayerNorm
 
 
-<<<<<<< HEAD
-=======
-class GRNTransformer(nn.Module):
-    def __init__(
-            self,
-            embedding_dim: int = 64,
-            ffn_embedding_dim: int = 64,
-            num_attention_heads: int = 4,
-    ) -> None:
-        super().__init__()
-
-        self.embedding_dim = embedding_dim
-
-        row_self_attention = Attention(
-            embedding_dim,
-            num_attention_heads,
-        )
-
-        feed_forward_layer = FeedForwardNetwork(
-            embedding_dim,
-            ffn_embedding_dim,
-        )
-
-        self.attention = self.build_residual(row_self_attention)
-        self.feed_forward_layer = self.build_residual(feed_forward_layer)
-
-    def build_residual(self, layer: nn.Module):
-        return NormalizedResidualBlock(
-            layer,
-            self.embedding_dim,
-        )
-
-    def forward(self,x, network,train=True,):
-        x, row_attn, l = self.attention(x, network, train=train)
-        x = self.feed_forward_layer(x)
-        return x, row_attn, l
-
-
->>>>>>> ce64a8f (init)
 class MLP(nn.Module):
 
     def __init__(self, embed_dim, output_dim):
@@ -130,12 +86,7 @@ class NormalizedResidualBlock(nn.Module):
         else:
             x = outputs
             out = None
-<<<<<<< HEAD
         x = x + residual
-=======
-
-        x = residual + x
->>>>>>> ce64a8f (init)
 
         if out is not None:
             return (x,) + tuple(out)
