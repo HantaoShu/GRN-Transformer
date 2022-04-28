@@ -9,6 +9,7 @@ import torch
 from src.model import Model
 from torch.utils.data import DataLoader, TensorDataset
 from tqdm import tqdm
+import pynvml
 parser = argparse.ArgumentParser()
 parser.add_argument("--n_epochs", type=int, default=2000, help="number of epochs of training")
 parser.add_argument("--layers", default=5, type=int, metavar="N", help="number of layers")
@@ -100,7 +101,7 @@ def train_model(opt):
         for data, mask, idn in dataloader:
             data = torch.stack([data] * 1)
             mask = torch.stack([mask] * 1)
-            optimizer.zero_grad()
+            optimizer.zero_grad(    )
             data_output = data.clone()
             data = data.to(device)
             mask_id = np.array(random.choices(range(data.shape[1] * data.shape[2]), k=data.shape[1] * data.shape[2] // 100))
@@ -133,7 +134,7 @@ def train_model(opt):
     adj = np.array(adj)
     pkl.dump([adj, loss_save], open(f'{opt.save_name}', 'wb'))
     return time1_end-time1_start,time2_end-time2_start
-
+    
 if __name__ == '__main__':
     opt = parser.parse_args()
     np.random.seed(opt.rep)
@@ -150,7 +151,7 @@ if __name__ == '__main__':
     else:
         dataset_name = opt.dataset
 
-    opt.save_name = f'{opt.save_name}/normal_transformer_{dataset_name}_{opt.rep}'
+    opt.save_name = f'{opt.save_name}/normal_transformer2_{dataset_name}_{opt.rep}'
     try:
         t1,t2 = train_model(opt)
         f = open(f'{opt.save_name}.time.txt','w')

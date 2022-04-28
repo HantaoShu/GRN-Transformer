@@ -81,7 +81,7 @@ class GRNTransformer(nn.Module):
             self.embedding_dim,
         )
 
-    def forward(self,x, network,train=True,):
+    def forward(self, x, network, train=True, ):
         x, row_attn, l = self.attention(x, network, train=train)
         x = self.feed_forward_layer(x)
         return x, row_attn, l
@@ -124,7 +124,6 @@ class NormalizedResidualBlock(nn.Module):
         else:
             x = outputs
             out = None
-
         x = residual + x
 
         if out is not None:

@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn as nn
 
@@ -28,9 +27,9 @@ class Model(nn.Module):
         self.connect_layers = nn.Linear(self.args.embed_dim, 1)
         self.emb_layer_norm_before = ESM1bLayerNorm(self.args.embed_dim)
         self.emb_layer_norm_after = ESM1bLayerNorm(self.args.embed_dim)
-        self.lm_head = MLP(embed_dim=self.args.embed_dim,output_dim=1)
+        self.lm_head = MLP(embed_dim=self.args.embed_dim, output_dim=1)
 
-    def forward(self, x, zero, network,train=True) :
+    def forward(self, x, zero, network, train=True):
         x = torch.cat([self.embed_X(x.unsqueeze(-1)), self.zeros_embed(zero.unsqueeze(-1))], -1)
 
         x = self.emb_layer_norm_before(x)
@@ -40,7 +39,7 @@ class Model(nn.Module):
 
         for layer_idx, layer in enumerate(self.layers):
 
-            x = layer(x, network,train=train)
+            x = layer(x, network, train=train)
             x, row_attn, l = x
             row_attn_weights.append(row_attn.permute(1, 0, 2, 3))
         x = self.emb_layer_norm_after(x)
@@ -48,9 +47,12 @@ class Model(nn.Module):
         x = self.lm_head(x)
         result = {"logits": x}
         row_attentions = torch.stack(row_attn_weights, 1)
-        result["row_attentions"] = row_attentions.view(-1, row_attentions.shape[-1], row_attentions.shape[-1]).permute(2,1,0).contiguous().detach().cpu().numpy()
+        print('row_attn.shape',row_attn.shape)
+        print('row_attentions.shape',row_attentions.shape)
+        result["row_attentions"] = row_attentions.view(-1, row_attentions.shape[-1],
+                                                       row_attentions.shape[-1]).permute(2, 1,
+                                                                                         0).contiguous().detach().cpu().numpy()
         return result
-
 
     def loss(self, y, pred, d_mask):
         return torch.sum(((y - pred) * d_mask) ** 2) / (torch.sum(d_mask) + 1e-5)
