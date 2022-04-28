@@ -13,7 +13,7 @@ The github repo is still under construction and it will be finished soon.
 
 ## Dependencies
 - python==3.7
-- einops==0.3.0
+- einops==0.3.0`
 - pytorch==1.7.0+cu101
 - pandas==1.1.4
 - numpy==1.19.4
