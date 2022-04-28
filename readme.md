@@ -2,7 +2,8 @@
 
 ## About
 This directory contains the code and resources of the following paper:
-<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>
+<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>\
+The github repo is still under construction and it will be finished soon.
 
 ## Overview of the Model
 
