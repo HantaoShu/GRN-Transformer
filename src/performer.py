@@ -75,7 +75,7 @@ def softmax_kernel(data, *, projection_matrix, is_query, normalize_data=True, ep
     return data_dash.type_as(data)
 
 
-class Performer_attn(nn.Module):
+class Gene_Performer_attn(nn.Module):
     def __init__(self, embed_dim, num_heads, ortho_scaling=0):
         super().__init__()
         self.num_heads = num_heads
@@ -141,7 +141,78 @@ class Performer_attn(nn.Module):
         k_cumsum = k.sum(dim=-2)
         D_inv = 1. / torch.einsum('...nd,...d->...n', q, k_cumsum.type_as(q))  # q  head gene hidden
         context = torch.einsum('...nd,...ne->...de', k, v)
-        print('context')
+        out = torch.einsum('...de,...nd,...n->...ne', context, q, D_inv)
+        out = out.view(self.num_heads, num_cols, num_rows, self.head_dim).transpose(0, 2).reshape(num_rows, num_cols, embed_dim)
+        attn = torch.einsum('hqf,hkf->hqk', q, k)
+        return out, attn
+
+
+class cell_Performer_attn(nn.Module):
+    def __init__(self, embed_dim, num_heads, ortho_scaling=0):
+        super().__init__()
+        self.num_heads = num_heads
+        self.head_dim = embed_dim // num_heads
+        self.nb_features = embed_dim
+        self.ortho_scaling = ortho_scaling
+
+        self.create_projection = partial(gaussian_orthogonal_random_matrix, nb_rows=self.nb_features, nb_columns=self.head_dim,
+                                         scaling=ortho_scaling)
+        projection_matrix = self.create_projection()
+        self.register_buffer('projection_matrix', projection_matrix)
+
+        self.generalized_attention = False
+        self.kernel_fn = nn.ReLU()
+
+        self.no_projection = False
+        self.to_q = nn.Linear(embed_dim, embed_dim)
+        self.to_k = nn.Linear(embed_dim, embed_dim)
+        self.to_v = nn.Linear(embed_dim, embed_dim)
+
+    def linear_attention(self, q, k, v):
+        k_cumsum = k.sum(dim=-2)
+        D_inv = 1. / torch.einsum('...nd,...d->...n', q, k_cumsum.type_as(q))  # q batch head gene hidden
+        context = torch.einsum('...nd,...ne->...de', k, v)
+        out = torch.einsum('...de,...nd,...n->...ne', context, q, D_inv)
+        return out
+
+    def forward(self, x, return_attn=True):
+        if not return_attn:
+            device = x.device
+            num_rows, num_cols, embed_dim = x.size()
+            q = self.to_q(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+            k = self.to_k(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+            v = self.to_v(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+            create_kernel = partial(softmax_kernel, projection_matrix=self.projection_matrix, device=device)
+            q = create_kernel(q, is_query=True)
+            k = create_kernel(k, is_query=False)
+            q = q.mean(0)
+            k = k.mean(0)
+            v = v.permute(1, 2, 0, 3).reshape(self.num_heads, num_cols, -1)
+
+            attn_fn = self.linear_attention
+            out = attn_fn(q, k, v)
+            out = out.view(self.num_heads, num_cols, num_rows, self.head_dim).transpose(0, 2).reshape(num_rows, num_cols,
+                                                                                                      embed_dim)
+            return out, None
+        else:
+            return self.pred(x)
+
+    def pred(self, x):
+        device = x.device
+        num_rows, num_cols, embed_dim = x.size()
+        q = self.to_q(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+        k = self.to_k(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+        v = self.to_v(x).view(num_rows, num_cols, self.num_heads, self.head_dim).transpose(1, 2)
+        create_kernel = partial(softmax_kernel, projection_matrix=self.projection_matrix, device=device)
+        q = create_kernel(q, is_query=True)
+        k = create_kernel(k, is_query=False)
+        q = q.mean(0)
+        k = k.mean(0)
+        v = v.permute(1, 2, 0, 3).reshape(self.num_heads, num_cols, -1)
+
+        k_cumsum = k.sum(dim=-2)
+        D_inv = 1. / torch.einsum('...nd,...d->...n', q, k_cumsum.type_as(q))  # q  head gene hidden
+        context = torch.einsum('...nd,...ne->...de', k, v)
         out = torch.einsum('...de,...nd,...n->...ne', context, q, D_inv)
         out = out.view(self.num_heads, num_cols, num_rows, self.head_dim).transpose(0, 2).reshape(num_rows, num_cols, embed_dim)
         attn = torch.einsum('hqf,hkf->hqk', q, k)
@@ -159,7 +230,7 @@ class GRNTransformer(nn.Module):
 
         self.embedding_dim = embedding_dim
 
-        row_self_attention = Performer_attn(
+        row_self_attention = Gene_Performer_attn(
             embedding_dim,
             num_attention_heads,
         )
@@ -170,6 +241,8 @@ class GRNTransformer(nn.Module):
         )
 
         self.attention = self.build_residual(row_self_attention)
+        self.col_attention = self.build_residual(cell_Performer_attn(embedding_dim, num_attention_heads))
+
         self.feed_forward_layer = self.build_residual(feed_forward_layer)
 
     def build_residual(self, layer: nn.Module):
@@ -180,6 +253,9 @@ class GRNTransformer(nn.Module):
 
     def forward(self, x, return_attn=True, ):
         x, attn = self.attention(x, return_attn=return_attn)
+        x = x.transpose(0, 1)
+        x, _ = self.col_attention(x, return_attn=return_attn)
+        x = x.transpose(0, 1)
         x = self.feed_forward_layer(x)
         return x, attn
 
@@ -207,6 +283,7 @@ class Model(nn.Module):
         self.lm_head = MLP(embed_dim=self.args.embed_dim, output_dim=1)
 
     def forward(self, x, zero, network, return_attn=False):
+        x, zero = x.squeeze(0), zero.squeeze(0)
         n_cell, n_gene = x.shape
         x = torch.cat([self.embed_X(x.unsqueeze(-1)), self.zeros_embed(zero.unsqueeze(-1))], -1)
         x = self.emb_layer_norm_before(x)
@@ -215,12 +292,12 @@ class Model(nn.Module):
             x, attn = layer(x, return_attn=return_attn)
             row_attn_weights.append(attn)
         x = self.emb_layer_norm_after(x)
-        # x = x.permute(2, 0, 1, 3)
-        x = self.lm_head(x)[:, :n_gene].squeeze(-1)
+        x = self.lm_head(x)[:, :n_gene]
         if return_attn:
-            result = {"logits": x, 'attn': torch.cat(row_attn_weights)}
+            result = {"logits": x.unsqueeze(0),
+                      'row_attentions': torch.cat(row_attn_weights).permute(2, 1, 0).contiguous().detach().cpu().numpy()}
         else:
-            result = {"logits": x}
+            result = {"logits": x.unsqueeze(0)}
 
         # row_attentions = torch.stack(row_attn_weights, 1)
         return result

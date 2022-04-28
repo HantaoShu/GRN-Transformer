@@ -395,10 +395,14 @@ class GRNTransformer(nn.Module):
             num_attention_heads: int = 4, bucket_size=64
     ) -> None:
         super().__init__()
-
+        self.bucket_size = bucket_size
         self.embedding_dim = embedding_dim
 
         row_self_attention = LSHSelfAttention(
+            embedding_dim,
+            num_attention_heads, bucket_size=bucket_size
+        )
+        col_self_attention = LSHSelfAttention(
             embedding_dim,
             num_attention_heads, bucket_size=bucket_size
         )
@@ -408,6 +412,7 @@ class GRNTransformer(nn.Module):
             ffn_embedding_dim,
         )
         self.attention = self.build_residual(row_self_attention)
+        self.col_attention = self.build_residual(col_self_attention)
         self.feed_forward_layer = self.build_residual(feed_forward_layer)
 
     def build_residual(self, layer: nn.Module):
@@ -416,8 +421,22 @@ class GRNTransformer(nn.Module):
             self.embedding_dim,
         )
 
-    def forward(self, x, return_attn=True, input_mask=None):
+    def forward(self, x, return_attn=True, n_cell=0, n_gene=0):
+        pad_len = math.ceil(x.shape[1] / (self.bucket_size * 2)) * (self.bucket_size * 2) - x.shape[1]
+        x = F.pad(x, [0, 0, 0, pad_len])
+        input_mask = torch.ones(x.shape[1]).to(x.device)
+        input_mask[-pad_len:] = 0
         x, attn = self.attention(x, return_attn=return_attn, input_mask=input_mask)
+
+        x = x[:, :n_gene]
+        x = x.transpose(0, 1)
+
+        pad_len2 = math.ceil(x.shape[1] / (self.bucket_size * 2)) * (self.bucket_size * 2) - x.shape[1]
+        x = F.pad(x, [0, 0, 0, pad_len2])
+        input_mask2 = torch.ones(x.shape[1]).to(x.device)
+        input_mask2[-pad_len2:] = 0
+        x, _ = self.col_attention(x, return_attn=return_attn, input_mask=input_mask2)
+        x = x.transpose(0, 1)[:n_cell]
         x = self.feed_forward_layer(x)
         return x, attn
 
@@ -446,26 +465,25 @@ class Model(nn.Module):
         self.lm_head = MLP(embed_dim=self.args.embed_dim, output_dim=1)
 
     def forward(self, x, zero, network, return_attn=False):
+        x, zero = x.squeeze(0), zero.squeeze(0)
         n_cell, n_gene = x.shape
         x = torch.cat([self.embed_X(x.unsqueeze(-1)), self.zeros_embed(zero.unsqueeze(-1))], -1)
         x = self.emb_layer_norm_before(x)
         row_attn_weights = []
-        pad_len = math.ceil(x.shape[1] / (self.bucket_size * 2)) * (self.bucket_size * 2) - x.shape[1]
-        x = F.pad(x, [0, 0, 0, pad_len])
-        input_mask = torch.ones(x.shape[1]).to(x.device)
-        input_mask[-pad_len:] = 0
+
         for layer_idx, layer in enumerate(self.layers):
-            x, attn = layer(x, return_attn=return_attn, input_mask=input_mask)
+            x, attn = layer(x, return_attn=return_attn, n_cell=n_cell, n_gene=n_gene)
             row_attn_weights.append(attn)
         x = self.emb_layer_norm_after(x)
-        # x = x.permute(2, 0, 1, 3)
-        x = self.lm_head(x)[:, :n_gene].squeeze(-1)
+        x = self.lm_head(x)[:, :n_gene]
+        x = x[:n_cell]
         if return_attn:
-            result = {"logits": x, 'attn': torch.cat(row_attn_weights)}
+            result = {"logits": x.unsqueeze(0),
+                      'row_attentions': torch.cat(row_attn_weights).permute(2, 1, 0).contiguous().detach().cpu().numpy()[:,
+                                        :n_gene, :n_gene]}
         else:
-            result = {"logits": x}
+            result = {"logits": x.unsqueeze(0)}
 
-        # row_attentions = torch.stack(row_attn_weights, 1)
         return result
 
     def loss(self, y, pred, d_mask):
