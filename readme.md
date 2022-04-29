@@ -3,7 +3,7 @@
 ## About
 This directory contains the code and resources of the following paper:
 <i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>\
-The github repo is still under construction and it will be finished soon.
+
 
 ## Overview of the Model
 
@@ -42,7 +42,7 @@ All dependencies can be installed within a few minutes.
     - Simulation 
         - ER/SF
             - inputs:  Similar with inputs directory of 500_ChIP-seq_mDC except train-test-split index files. 
-            'split\_\*\_0.5.pkl' denotes to the split file for train-test-split. 
+            'split\_\*\_0.5.pkl' denotes to the split file for train-test-split (without label flipped). 
             - outputs: Similar with outputs directory of 500_ChIP-seq_mDC 
 
 - [self_superivsed_main.py]  The main function for the self-supervised learning step.
@@ -84,5 +84,6 @@ Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
  
  # Other baseline single-cell RNA-seq package 
  - BEELINE https://github.com/Murali-group/Beeline
+ - DeepSEM https://github.com/HantaoShu/DeepSEM
  - CNNC https://github.com/xiaoyeye/CNNC
  - DeepDRIM https://github.com/jiaxchen2-c/DeepDRIM

@@ -15,7 +15,7 @@ from src.performer import Model as Performer
 from src.reformer import Model as Reformer
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--n_epochs", type=int, default=2000, help="number of epochs of training")
+parser.add_argument("--n_epochs", type=int, default=1500, help="number of epochs of training")
 parser.add_argument("--layers", default=5, type=int, metavar="N", help="number of layers")
 parser.add_argument("--attention", default='conventional_attention', type=str,help="selection from {conventional_attention,efficient_attention,performer,reformer}")
 parser.add_argument("--embed_dim", default=64, type=int, metavar="N", help="embedding dimension")
@@ -28,7 +28,7 @@ parser.add_argument("--dataset", type=str, default='')
 parser.add_argument("--PIDC_file", type=str, default='')
 parser.add_argument("--batchsize", type=int, default=32)
 parser.add_argument("--seed", type=int, default=0)
-parser.add_argument("--p", type=float, default=0.01,help='the fraction of random mask')
+parser.add_argument("--p", type=float, default=0.15,help='the fraction of random mask')
 opt = parser.parse_args()
 np.random.seed(opt.seed)
 torch.manual_seed(opt.seed)
