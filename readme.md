@@ -2,7 +2,7 @@
 
 ## About
 This directory contains the code and resources of the following paper:
-<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>\
+<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>.
 
 
 ## Overview of the Model
@@ -13,7 +13,7 @@ This directory contains the code and resources of the following paper:
 
 ## Dependencies
 - python==3.7
-- einops==0.3.0`
+- einops==0.3.0
 - pytorch==1.7.0+cu101
 - pandas==1.1.4
 - numpy==1.19.4
@@ -59,7 +59,7 @@ We take 500_ChIP-seq_mDC data as an example.
     ```
     where '--data_file' denotes the input expression data (cells in rows and genes in columns), \
     '--PIDC_file' denotes the input pre-calculated PIDC file (three columns (TF name, Target gene name, and importance values), \
-    '--attention' denotes the attention mechanism (selection from conventional_attention, efficient_attention, performer, reformer}), \
+    '--attention' denotes the attention mechanism (selection from {conventional_attention, efficient_attention, performer, reformer}), \
     '--save_name' denotes the output filename used in the following supervised step.
     
     We recommend using conventional_attention when the number of genes is not too large (e.g., less than 2000 for 
@@ -73,12 +73,13 @@ We take 500_ChIP-seq_mDC data as an example.
     ./demo_data/BEELINE/500_ChIP-seq_mDC/inputs/ --train_y_file  train_y_non.npy --output_file 
     ./demo_data/BEELINE/500_ChIP-seq_mDC/outputs/performance.pkl
     ```
-  where '--pre_GRN_file' denotes the output file of the previous self-supervised step,
+  where '--pre_GRN_file' denotes the output file of the previous self-supervised step,\
   '--data_dir' denotes the directory which includes all training data,\
   '--train_y_file' denotes the name of the training label file,\
-  and '--output_file' denotes the output file name.\
+  '--output_file' denotes the output file name.\
   It should be finished in several minutes 
-for the given demo dataset. 
+for the given demo dataset. \
+\
 If you have any questions, please feel free to contact me. \
 Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
  
