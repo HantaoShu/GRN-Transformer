@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch import einsum
 
 from src.modules import FeedForwardNetwork, ESM1bLayerNorm, NormalizedResidualBlock, MLP
+# We followed implement in https://github.com/lucidrains/linear-attention-transformer
 
 
 class Gene_Linear_Attention(nn.Module):
