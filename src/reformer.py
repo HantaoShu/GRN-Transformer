@@ -11,6 +11,8 @@ from src.modules import FeedForwardNetwork, ESM1bLayerNorm, NormalizedResidualBl
 
 TOKEN_SELF_ATTN_VALUE = -5e4  # carefully set for half precision to work
 
+# We followed implement in https://github.com/lucidrains/reformer-pytorch
+
 
 def chunked_sum(tensor, chunks=1):
     *orig_size, last_dim = tensor.shape
