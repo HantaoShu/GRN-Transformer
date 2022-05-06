@@ -9,7 +9,7 @@ from einops import repeat
 from src.modules import FeedForwardNetwork, ESM1bLayerNorm, NormalizedResidualBlock, MLP
 
 TORCH_GE_1_8_0 = LooseVersion(torch.__version__) >= LooseVersion('1.8.0')
-
+# We followed implement in https://github.com/lucidrains/performer-pytorch
 
 def orthogonal_matrix_chunk(cols, device=None):
     unstructured_block = torch.randn((cols, cols), device=device)
