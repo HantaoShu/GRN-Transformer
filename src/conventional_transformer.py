@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 
 from src.modules import FeedForwardNetwork, ESM1bLayerNorm, NormalizedResidualBlock, MLP
-
+# We followed implement in https://github.com/facebookresearch/esm
 
 class Row_Attention(nn.Module):
 
