@@ -2,7 +2,7 @@
 
 ## About
 This directory contains the code and resources of the following paper:
-<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i>.
+<i> Boosting single-cell gene regulatory network reconstruction via bulk-cell transcriptomic data </i> which is published in Briefings in Bioinformatics (https://doi.org/10.1093/bib/bbac389).
 
 
 ## Overview of the Model
