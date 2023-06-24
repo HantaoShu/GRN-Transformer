@@ -81,9 +81,9 @@ We take 500_ChIP-seq_mDC data as an example.
 for the given demo dataset. \
 \
 If you have any questions, please feel free to contact me. \
-Email: sht18@mails.tsinghua.edu.cn, shuht96@gmail.com
+Email: shuht96@gmail.com
  
- # Other baseline single-cell RNA-seq package 
+ # Other baseline single-cell RNA-seq packages 
  - BEELINE https://github.com/Murali-group/Beeline
  - DeepSEM https://github.com/HantaoShu/DeepSEM
  - CNNC https://github.com/xiaoyeye/CNNC
